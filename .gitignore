@@ -3,3 +3,5 @@ yarn.lock
 
 .cache
 public
+
+src/proto
