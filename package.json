@@ -23,6 +23,6 @@
   },
   "scripts": {
     "build:client": "parcel build src/index.html -d public",
-    "build:server": "parcel build src/server.ts -d public -o server.js -t node --bundle-node-modules"
+    "build:server": "parcel build src/server.ts -d public -o server.js -t node"
   }
 }
