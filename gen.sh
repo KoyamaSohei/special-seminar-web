@@ -1,6 +1,5 @@
 GRPC_WEB_PLUGIN_PATH=/usr/local/bin/protoc-gen-grpc-web
 DIST_DIR=./src/proto
-PROTOC_GEN_TS_PATH="./node_modules/.bin/protoc-gen-ts"
 
 mkdir ./src/proto
 
