@@ -22,7 +22,7 @@
     "react-dom": "^16.12.0"
   },
   "scripts": {
-    "build:client": "parcel build src/index.html -d public",
+    "build:client": "parcel build src/index.html -d public --public-url replacethislinewithadot && sed -i 's/replacethislinewithadot/./g' public/index.html",
     "build:server": "parcel build src/server.ts -d public -o server.js -t node"
   }
 }
