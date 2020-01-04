@@ -1,4 +1,4 @@
-import { CreateAccountRequest, CreateAccountResponse, getTokenRequest, ResponseStatus, Domain, GetRecordsRequest, Record, RRType, AddRecordRequest, InitZoneRequest, RemoveRecordRequest, RemoveZoneRequest } from './proto/api_pb'
+import { CreateAccountRequest, CreateAccountResponse, getTokenRequest, ResponseStatus, Domain, GetRecordsRequest, Record, RRType, AddRecordRequest, InitZoneRequest, RemoveRecordRequest, RemoveZoneRequest, Ping } from './proto/api_pb'
 import { PdnsServiceClient } from './proto/ApiServiceClientPb'
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
 
@@ -133,6 +133,21 @@ export function removeRecord(token: string, name: string, origin: string, type: 
       }
       resolve({
         status: res.getStatus(),
+      })
+    })
+  })
+}
+
+export function ping(text: string): Promise<{ text: string }>  {
+  const req  = new Ping();
+  req.setText(text);
+  return new Promise((resolve, reject) => {
+    client.ping(req,{},(err,res) => {
+      if(!!err) {
+        reject(err);
+      }
+      resolve({
+        text: res.getText(),
       })
     })
   })
