@@ -2,6 +2,11 @@ import Path from 'path'
 import Express from 'express';
 
 const app = Express();
+app.use(function(req, res, next) {
+  const str = `${req.method} ${req.host} ${req.path} ${req.httpVersion}`;
+  console.log(str)
+  next();
+});
 app.use(Express.static(Path.join(__dirname, '.')));
 app.get('*', (req, res) => {
   res.sendFile(Path.join(__dirname + '/index.html'));
