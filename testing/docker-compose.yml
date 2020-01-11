@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  web:
+    build: ../
+    networks:
+      envoymesh:
+        aliases:
+          - web
+  envoy:
+    build: .
+    networks:
+      - envoymesh
+    ports:
+      - "80:80"
+      - "9901:9901"
+    depends_on:
+      - web
+networks:
+  envoymesh: {}
