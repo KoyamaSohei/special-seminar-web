@@ -5,6 +5,7 @@
     "@types/node": "^13.1.2",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
+    "@types/react-router-dom": "^5.1.3",
     "@typescript-eslint/eslint-plugin": "^2.14.0",
     "@typescript-eslint/parser": "^2.14.0",
     "cssnano": "^4.1.10",
@@ -20,10 +21,11 @@
     "google-protobuf": "^3.11.2",
     "grpc-web": "^1.0.7",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2"
   },
   "scripts": {
-    "build:client": "parcel build src/index.html -d public --public-url replacethislinewithadot && sed -i 's/replacethislinewithadot/./g' public/index.html",
+    "build:client": "parcel build src/index.html -d public ",
     "build:server": "parcel build src/server.ts -d public -o server.js -t node"
   }
 }
