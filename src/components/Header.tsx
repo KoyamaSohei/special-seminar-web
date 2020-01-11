@@ -4,7 +4,7 @@ import { AuthContext } from '../util/auth'
 
 export default function Header() {
   const { Authenticated } = useContext(AuthContext);
-  if(!Authenticated) {
+  if (!Authenticated) {
     return (
       <header>
         <Link to="/">
@@ -19,9 +19,9 @@ export default function Header() {
   }
   return (
     <header>
-    <Link to="/">
-      <h1>special seminar</h1>
-    </Link>
-  </header>
+      <Link to="/">
+        <h1>special seminar</h1>
+      </Link>
+    </header>
   )
 }
