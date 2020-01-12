@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { useAuth,AuthContext } from './util/auth'
+import { useAuth, AuthContext } from './util/auth'
 import Header from './components/Header'
 import Main from './page/Main'
 import Login from './page/Login'
@@ -17,7 +17,6 @@ function App() {
           <Route path="/" exact component={Main} />
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
-          
         </Router>
       </AuthContext.Provider>
     </>
