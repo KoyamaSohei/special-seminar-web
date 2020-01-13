@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { AuthContext, AuthStatus } from '../util/auth'
 import { getToken } from '../util/grpc'
 import { ResponseStatus } from '../proto/api_pb'
+import { Form, Title, ErrorDialog } from '../components/Form'
 
 function Login() {
   const [id, changeId] = useState('');
@@ -42,11 +43,13 @@ function Login() {
 
   return (
     <div>
-      <form className={status === AuthStatus.FAILED ? 'invalid' : ''}>
-        <h3>Login</h3>
-        <p>{status === AuthStatus.FAILED
+      <Form className={status === AuthStatus.FAILED ? 'invalid' : ''}>
+        <Title>Log in</Title>
+        <ErrorDialog>
+          {status === AuthStatus.FAILED
             ? 'emailまたはパスワードが間違っています'
-            : ''}</p>
+            : ''}
+        </ErrorDialog>
         <input placeholder="email" type="text" value={id} onChange={e => changeId(e.target.value)} />
         <input
           name="password"
@@ -55,10 +58,10 @@ function Login() {
           value={pass}
           onChange={e => changePass(e.target.value)}
         />
-        <button type="submit" onClick={e => handleSubmit(e)}>
+        <button type="submit" onClick={(e) => handleSubmit(e)}>
           Log in
         </button>
-      </form>
+      </Form>
     </div>
   )
 }

@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { AuthContext, AuthStatus } from '../util/auth'
 import { createAccount } from '../util/grpc'
 import { CreateAccountResponse } from '../proto/api_pb'
+import { Form, Title, ErrorDialog } from '../components/Form'
 
 export default function Signup() {
   const [id, changeId] = useState('');
@@ -42,11 +43,13 @@ export default function Signup() {
 
   return (
     <div>
-      <form className={status === AuthStatus.FAILED ? 'invalid' : ''}>
-        <h3>Sign up</h3>
-        <p>{status === AuthStatus.FAILED
-            ? 'emailまたはパスワードが間違っています'
-            : ''}</p>
+      <Form className={status === AuthStatus.FAILED ? 'invalid' : ''}>
+        <Title>Sign up</Title>
+        <ErrorDialog>
+          {status === AuthStatus.FAILED
+            ? 'このidは既に使われています'
+            : ''}
+        </ErrorDialog>
         <input placeholder="email" type="text" value={id} onChange={e => changeId(e.target.value)} />
         <input
           name="password"
@@ -55,10 +58,10 @@ export default function Signup() {
           value={pass}
           onChange={e => changePass(e.target.value)}
         />
-        <button type="submit" onClick={e => handleSubmit(e)}>
-        Sign up 
+        <button type="submit" onClick={(e) => handleSubmit(e)}>
+          Sign up
         </button>
-      </form>
+      </Form>
     </div>
   )
 

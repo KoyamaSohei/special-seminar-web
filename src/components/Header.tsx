@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import StyledLink from '../components/StyledLink'
 import { AuthContext } from '../util/auth'
 
 export const HeaderWrapper = styled.header`
@@ -32,22 +32,21 @@ export default function Header() {
   const { Authenticated } = useContext(AuthContext);
   if (!Authenticated) {
     return (
-      <header>
-        <Link to="/">
-          <h1>special seminar</h1>
-        </Link>
-        <div>
-          <Link to="/signup">Sign up</Link>
-          <Link to="/login">Log in</Link>
-        </div>
-      </header>
+      <HeaderWrapper>
+        <h1>special seminar</h1>
+        <MenuWrapper>
+          <StyledLink to="/signup">Sign up</StyledLink>
+          <StyledLink to="/login">Login</StyledLink>
+        </MenuWrapper>
+      </HeaderWrapper>
     )
   }
   return (
-    <header>
-      <Link to="/">
-        <h1>special seminar</h1>
-      </Link>
-    </header>
+    <HeaderWrapper>
+      <h1>special seminar</h1>
+      <MenuWrapper>
+        <StyledLink to="/signout">Signout</StyledLink>
+      </MenuWrapper>
+    </HeaderWrapper>
   )
 }
