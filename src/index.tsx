@@ -6,6 +6,7 @@ import Header from './components/Header'
 import Main from './page/Main'
 import Login from './page/Login'
 import Signup from './page/Signup'
+import RecordManager from './page/RecordManager'
 
 function App() {
   const [auth, update] = useAuth()
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" exact component={Main} />
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
+          <Route path="/domains/:name" exact component={RecordManager} />
         </Router>
       </AuthContext.Provider>
     </>
