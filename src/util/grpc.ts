@@ -2,7 +2,7 @@ import { CreateAccountRequest, CreateAccountResponse, getTokenRequest, ResponseS
 import { PdnsServiceClient } from '../proto/ApiServiceClientPb'
 import { Empty } from 'google-protobuf/google/protobuf/empty_pb'
 
-export const client = new PdnsServiceClient(`http://${window.location.hostname}/grpc`);
+export const client = new PdnsServiceClient(`https://${window.location.hostname}/grpc`);
 
 export function createAccount(email: string, pass: string): Promise<{ status: CreateAccountResponse.Status, token: string }> {
   const req = new CreateAccountRequest();
@@ -138,12 +138,12 @@ export function removeRecord(token: string, name: string, origin: string, type: 
   })
 }
 
-export function ping(text: string): Promise<{ text: string }>  {
-  const req  = new Ping();
+export function ping(text: string): Promise<{ text: string }> {
+  const req = new Ping();
   req.setText(text);
   return new Promise((resolve, reject) => {
-    client.ping(req,{},(err,res) => {
-      if(!!err) {
+    client.ping(req, {}, (err, res) => {
+      if (!!err) {
         reject(err);
       }
       resolve({
