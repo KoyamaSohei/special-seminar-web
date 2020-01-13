@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const DomainListWrapper = styled.ul`
+export const DomainListWrapper = styled.div`
   max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
