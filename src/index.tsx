@@ -6,6 +6,7 @@ import Header from './components/Header'
 import Main from './page/Main'
 import Login from './page/Login'
 import Signup from './page/Signup'
+import Signout from './page/Signout'
 import RecordManager from './page/RecordManager'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" exact component={Main} />
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
+          <Route path="/signout" exact component={Signout} />
           <Route path="/domains/:name" exact component={RecordManager} />
         </Router>
       </AuthContext.Provider>
