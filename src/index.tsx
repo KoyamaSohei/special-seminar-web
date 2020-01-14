@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { useAuth, AuthContext } from './util/auth'
 import Header from './components/Header'
 import Main from './page/Main'
@@ -16,11 +16,14 @@ function App() {
       <AuthContext.Provider value={{ ...auth, update }}>
         <Router>
           <Header />
-          <Route path="/" exact component={Main} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/signup" exact component={Signup} />
-          <Route path="/signout" exact component={Signout} />
-          <Route path="/domains/:name([0-9a-z.]+)" exact component={RecordManager} />
+          <Switch>
+            <Route path="/" exact component={Main} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/signup" exact component={Signup} />
+            <Route path="/signout" exact component={Signout} />
+            <Route path="/domains/:name([0-9a-z.]+)" exact component={RecordManager} />
+            <Redirect to='/' />
+          </Switch>
         </Router>
       </AuthContext.Provider>
     </>
