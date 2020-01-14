@@ -20,7 +20,7 @@ function App() {
           <Route path="/login" exact component={Login} />
           <Route path="/signup" exact component={Signup} />
           <Route path="/signout" exact component={Signout} />
-          <Route path="/domains/:name" exact component={RecordManager} />
+          <Route path="/domains/:name([0-9a-z.]+)" exact component={RecordManager} />
         </Router>
       </AuthContext.Provider>
     </>
